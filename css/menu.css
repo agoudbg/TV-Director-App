@@ -5,8 +5,8 @@ body {
     --contextmenu-line: rgb(224, 224, 224);
     --contextmenu-shadow: #51515152 1px 1px 8px;
     --middle-line: #d1d1d1;
-    --msgBox: #000;
-    --msgBox-bgcolor: rgb(255 255 255);
+    --msgBox: #ffffff;
+    --msgBox-bgcolor: #282828c4;
     --msgBox-shadow: #e3e3e366 0px 0px 2px;
 }
 
@@ -17,8 +17,8 @@ body[theme=dark] {
     --contextmenu-line: rgb(87, 87, 87);
     --contextmenu-shadow: #0202026b 1px 1px 9px;
     --middle-line: #5c5c5c;
-    --msgBox: rgb(255, 255, 255);
-    --msgBox-bgcolor: rgb(56 56 56);
+    --msgBox: #ffffff;
+    --msgBox-bgcolor: #282828c4;
     --msgBox-shadow: #0000002b 0px 0px 1px;
 }
 
@@ -117,10 +117,9 @@ body[theme=dark] {
 .msgBox {
     position: fixed;
     z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
-    top: 45px;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 0);
-    width: 70%;
+    transform: translate(-50%, -50%);
     max-width: 400px;
     max-height: 70%;
     padding: 10px 17px;
@@ -131,29 +130,30 @@ body[theme=dark] {
     visibility: hidden;
     border-radius: 4px;
     box-shadow: var(--msgBox-shadow);
-    animation: msgBox 7s;
+    animation: msgBox 4s;
     overflow: auto;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
+    backdrop-filter: blur(20px);
 }
 
 @keyframes msgBox {
     0% {
-        top: calc(-100% + 50px);
         visibility: visible;
+        opacity: 0;
     }
 
-    10% {
-        top: 25px;
+    5% {
+        opacity: 1;
     }
 
-    90% {
-        top: 25px;
+    95% {
+        opacity: 1;
     }
 
     100% {
-        top: calc(-100% + 50px);
+        opacity: 0;
         visibility: hidden;
     }
 }
