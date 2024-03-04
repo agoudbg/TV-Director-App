@@ -1,4 +1,4 @@
-body{
+body {
     --themecolor: rgb(214, 64, 64);
     --opeSvg: #000;
     --timer: #000;
@@ -6,7 +6,8 @@ body{
     --channel-button: rgb(141, 141, 141);
     --channel-button-hover-bgcolor: rgb(197, 197, 197);
 }
-body[theme=dark]{
+
+body[theme=dark] {
     --themecolor: rgb(214, 64, 64);
     --opeSvg: rgb(236, 236, 236);
     --timer: rgb(223, 223, 223);
@@ -15,7 +16,8 @@ body[theme=dark]{
     --channel-button-hover-bgcolor: rgb(83, 83, 83);
 
 }
-#leftInner{
+
+#leftInner {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -24,7 +26,8 @@ body[theme=dark]{
     height: 100%;
     margin: auto;
 }
-.headText{
+
+.headText {
     font-size: 26px;
     font-weight: bold;
     letter-spacing: 0.3em;
@@ -32,14 +35,16 @@ body[theme=dark]{
     text-align: center;
     color: var(--themecolor);
 }
-#timeText{
+
+#timeText {
     position: absolute;
     top: -5px;
     font-size: 16px;
     left: 15px;
     color: var(--timer);
 }
-.rightOpe{
+
+.rightOpe {
     position: absolute;
     top: -3px;
     right: 5px;
@@ -52,29 +57,36 @@ body[theme=dark]{
     word-break: keep-all;
     transition: right 0.4s, width 0.4s, opacity 0.3s;
 }
-.rightOpe[close=true]:not(*:hover){
+
+.rightOpe[close=true]:not(*:hover) {
     width: 40px;
     opacity: 0.3;
 }
-.rightOpe .rightButton{
+
+.rightOpe .rightButton {
     width: 20px;
     height: 20px;
     padding: 10px;
     -webkit-app-region: no-drag;
     display: inline-block;
     cursor: pointer;
+    border-radius: 2.8px;
 }
-.rightOpe .rightButton:hover{
+
+.rightOpe .rightButton:hover {
     background-color: var(--hovergrey1);
     transition: all 0.1s;
 }
-.rightOpe .rightButton:active{
+
+.rightOpe .rightButton:active {
     background-color: var(--hovergrey2);
 }
-.rightOpe svg{
+
+.rightOpe svg {
     fill: var(--opeSvg);
 }
-#screams{
+
+#screams {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -86,72 +98,101 @@ body[theme=dark]{
     left: 0;
     right: 0;
 }
-.screamSingle, #screams:after{
+
+.screamSingle,
+#screams:after {
     display: flex;
     flex-direction: column;
     margin: 0 2.5px;
 }
-#screams:after{
+
+#screams:after {
     content: '';
 }
-#screams[ltype=x11] .screamSingle{
+
+#screams[ltype=x11] .screamSingle {
     width: calc(100% / 1);
     height: calc(100% / 1);
 }
-#screams[ltype=x22] .screamSingle{
+
+#screams[ltype=x22] .screamSingle {
     width: calc(100% / 2 - 5px);
     height: calc(100% / 2);
 }
-#screams[ltype=x32] .screamSingle{
+
+#screams[ltype=x32] .screamSingle {
     width: calc(100% / 3 - 5px);
     height: calc(100% / 2);
 }
-#screams[ltype=x33] .screamSingle{
+
+#screams[ltype=x33] .screamSingle {
     width: calc(100% / 3 - 5px);
     height: calc(100% / 3);
 }
-#screams[ltype=x43] .screamSingle{
+
+#screams[ltype=x43] .screamSingle {
     width: calc(100% / 4 - 5px);
     height: calc(100% / 3);
 }
-#screams[ltype=x44] .screamSingle{
+
+#screams[ltype=x44] .screamSingle {
     width: calc(100% / 4 - 5px);
     height: calc(100% / 4);
 }
-.screamSingle .player{
+
+.screamSingle .player {
     flex-grow: 1;
 }
-.screamSingle .controller{
+
+.screamSingle .controller {
     display: flex;
     overflow: hidden;
     height: 0px;
     text-overflow: clip;
+    margin-top: 3px;
     transition: all 0.23s;
 }
-.screamSingle .controller:not(*:hover){
+
+.screamSingle:not(*:hover) .controller {
     justify-content: space-around;
 }
-.screamSingle .controller:hover{
-    justify-content: space-between;
+
+.screamSingle:hover .controller {
+    justify-content: left;
 }
-#screams[controller=open] .screamSingle .controller{
+
+#screams[controller=open] .screamSingle .controller {
     height: 30px;
     padding: 0 20px;
 }
-#screams .screamSingle .controller *{
+
+#screams .screamSingle .controller * {
     transition: all 0.4s;
     overflow: hidden;
 }
-.screamSingle .controller .opes, .screamSingle .controller .moreButton{
-    max-width: 0;
+
+.screamSingle .controller .opes,
+.screamSingle .controller .moreButton {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    right: 20px;
+    visibility: hidden;
+    opacity: 0;
     overflow: hidden;
     word-break: keep-all;
     white-space: nowrap;
+    transition: all 0.3s;
 }
-.screamSingle:hover .controller .opes, .screamSingle:hover .controller .moreButton{
-    max-width: 50%;
+
+.screamSingle:hover .controller .moreButton {
+    visibility: visible;
+    opacity: 1;
 }
-.screamSingle .controller .name{
+
+.screamSingle .controller .name {
     flex-grow: 0;
     font-size: 15px;
     padding: 0 10px;
@@ -164,11 +205,13 @@ body[theme=dark]{
     max-width: 100%;
     transition: all 0.3s;
 }
-.screamSingle:hover .controller .name{
+
+.screamSingle:hover .controller .name {
     flex-grow: 1;
     max-width: calc(100% - 70px);
 }
-.controller button{
+
+.controller button {
     width: 23px;
     height: 23px;
     font-size: 16px;
@@ -178,24 +221,32 @@ body[theme=dark]{
     border: none;
     background: none;
 }
-.controller button:hover{
+
+.controller button:hover {
     background-color: var(--channel-button-hover-bgcolor);
 }
+
 /* ÃƒÂ¨Ã‚Â¦Ã¢â‚¬Â ÃƒÂ§Ã¢â‚¬ÂºÃ¢â‚¬â€œDplayerÃƒÂ¥Ã‚Â±Ã…Â¾ÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§ */
-.dplayer-video-wrap:not(.dplayer-fulled *){
-    background: none!important;
+.dplayer-video-wrap:not(.dplayer-fulled *) {
+    background: none !important;
 }
-.dplayer-live-badge, .dplayer-menu, .dplayer-mask, .dplayer-bezel-icon{
-    display: none!important;
+
+.dplayer-live-badge,
+.dplayer-menu,
+.dplayer-mask,
+.dplayer-bezel-icon {
+    display: none !important;
 }
-.dplayer-menu.sudo-open{
-    position: absolute!important;
-    top: initial!important;
-    left: initial!important;
-    right: 5px!important;
-    bottom: 5px!important;
-    display: block!important;
+
+.dplayer-menu.sudo-open {
+    position: absolute !important;
+    top: initial !important;
+    left: initial !important;
+    right: 5px !important;
+    bottom: 5px !important;
+    display: block !important;
 }
+
 /* .dplayer:not(.dplayer-fulled) .dplayer-play-icon, .dplayer:not(.dplayer-fulled) .dplayer-volume{
     display: none;
 } */
@@ -207,13 +258,16 @@ body[theme=dark]{
     transform: translate(-50%, -50%);
     text-align: center;
 }
-#screams:empty + .addOneTip{
+
+#screams:empty+.addOneTip {
     display: block;
 }
+
 .addOneTip p {
     margin: 20px 50px 20px 50px;
     opacity: 0.6;
 }
+
 .addOneTip i {
     display: block;
     width: 308px;
