@@ -1,20 +1,24 @@
-body{
+body {
     --page-bgcolor: #fff;
     --scroller-grey: rgba(196, 196, 196, 0.404);
 }
-body[theme=dark]{
+
+body[theme=dark] {
     --page-bgcolor: #141414;
 }
-body{
+
+body {
     user-select: none;
     background: var(--page-bgcolor);
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     outline: none;
 }
-main{
+
+main {
     display: flex;
     flex-direction: row;
     position: fixed;
@@ -23,29 +27,34 @@ main{
     left: 0;
     right: 0;
 }
-body.full main{
+
+body.full main {
     top: 7px;
 }
-.pageLeft{
+
+.pageLeft {
     position: relative;
     flex-grow: 1;
     flex-shrink: 1;
     height: 100%;
 }
-.pageRight{
+
+.pageRight {
     background-color: var(--page-bgcolor);
     width: 0;
     transition: all 0.3s;
     padding: 0;
 }
-.pageRight[show=relative]{
+
+.pageRight[show=relative] {
     position: relative;
     display: block;
     width: 300px;
     height: 100%;
     padding: 0 15px 0 15px;
 }
-.pageRight[show=fixed]{
+
+.pageRight[show=fixed] {
     position: absolute;
     display: block;
     width: 300px;
@@ -54,39 +63,53 @@ body.full main{
     z-index: 99;
     padding: 0 15px 0 15px;
 }
-.pageRight.commonCover{
+
+.pageRight.commonCover {
     display: none;
 }
-.pageRight[show=fixed].commonCover{
+
+.pageRight[show=fixed].commonCover {
     display: block;
 }
-.rightFrame{
+
+.rightFrame {
     position: relative;
     height: 100%;
     width: 300px;
     display: none;
+    visibility: hidden;
     overflow: auto;
+    transition: display 0s 0.3s, visibility 0s 0.3s;
 }
-.rightFrame[open=true]{
+
+.rightFrame[open=true] {
     display: block;
-    animation: frameCome 0.5s cubic-bezier(0.01, 0.24, 0, 0.86);
+    visibility: visible;
+    animation: frameCome 0.28s cubic-bezier(0.01, 0.24, 0, 0.86);
 }
-#linkEditBlock{
+
+#linkEditBlock {
     height: calc(100% - 95px);
     overflow: auto;
 }
+
 @keyframes frameCome {
-    0%{
+    0% {
         opacity: 0.3;
         top: 45px;
-        filter: blur(1px);
     }
-    100%{
+
+    50% {
+        opacity: 0.45;
+    }
+
+    100% {
         opacity: 1;
         top: 0px;
     }
 }
-.material-icons{
+
+.material-icons {
     font-family: 'Material Icons';
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -95,13 +118,15 @@ body.full main{
     font-feature-settings: 'liga';
     font-style: normal;
 }
-@font-face{
+
+@font-face {
     font-weight: 400;
     font-family: 'Material Icons';
     font-style: normal;
     src: url(../font/MaterialIcons-Regular.woff2) format('woff2');
 }
-.commonCover{
+
+.commonCover {
     display: block;
     position: fixed;
     top: 0;
@@ -110,27 +135,33 @@ body.full main{
     right: 0;
     z-index: 150000;
 }
-::-webkit-scrollbar{
+
+::-webkit-scrollbar {
     width: 7px;
-    height: 7px; 
+    height: 7px;
 }
-::-webkit-scrollbar:hover{
+
+::-webkit-scrollbar:hover {
     width: 7px;
-    height: 7px; 
+    height: 7px;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: var(--scroller-grey);
 }
-body *[scroll=hidden]::-webkit-scrollbar-thumb{
+
+body *[scroll=hidden]::-webkit-scrollbar-thumb {
     background: none;
 }
-::-webkit-scrollbar-track{
+
+::-webkit-scrollbar-track {
     border-radius: 10px;
     width: 0;
     opacity: 0;
 }
-#updatedWhat{
+
+#updatedWhat {
     overflow: auto;
     max-height: 50vh;
 }
