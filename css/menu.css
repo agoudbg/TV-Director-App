@@ -1,4 +1,4 @@
-body{
+body {
     --contextmenu-bgcolor: #fefefebf;
     --contextmenu-hover-bgcolor: #f2f2f24f;
     --contextmenu: #000;
@@ -9,7 +9,8 @@ body{
     --msgBox-bgcolor: rgb(255 255 255);
     --msgBox-shadow: #e3e3e366 0px 0px 2px;
 }
-body[theme=dark]{
+
+body[theme=dark] {
     --contextmenu-bgcolor: #2d2d2dbd;
     --contextmenu-hover-bgcolor: #3e3e3e69;
     --contextmenu: rgb(255, 255, 255);
@@ -20,7 +21,9 @@ body[theme=dark]{
     --msgBox-bgcolor: rgb(56 56 56);
     --msgBox-shadow: #0000002b 0px 0px 1px;
 }
-.contextMenu, .dplayer-menu{
+
+.contextMenu,
+.dplayer-menu {
     position: fixed;
     z-index: 9999999;
     width: 200px;
@@ -32,17 +35,20 @@ body[theme=dark]{
     overflow-y: auto;
     backdrop-filter: blur(20px);
 }
-.contextMenu button, .dplayer-menu div{
+
+.contextMenu button,
+.dplayer-menu div {
     display: block;
-    width: 100%;
+    width: -webkit-fill-available;
     border: none;
     color: var(--contextmenu);
     background: none;
+    margin: 0 4px;
     padding: 7px 15px;
+    border-radius: 4.4px;
     font-size: 15px;
     text-align: left;
     cursor: pointer;
-    border-radius: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -51,16 +57,19 @@ body[theme=dark]{
     -moz-user-select: none;
     user-select: none;
 }
-.dplayer-menu div a{
-    color: var(--contextmenu)!important;
-    background: none!important;
-    font-size: 15px!important;
-    text-align: left!important;
-    text-decoration: none!important;
-    line-height: 1!important;
-    padding: 0!important;
+
+.dplayer-menu div a {
+    color: var(--contextmenu) !important;
+    background: none !important;
+    font-size: 15px !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    line-height: 1 !important;
+    padding: 2px 0 !important;
 }
-.contextMenu .line, .dplayer-menu .line{
+
+.contextMenu .line,
+.dplayer-menu .line {
     display: block;
     height: 0;
     margin: 0 8px 0 8px;
@@ -71,31 +80,41 @@ body[theme=dark]{
     -moz-user-select: none;
     user-select: none;
 }
-.contextMenu button i, .dplayer-menu div i{
+
+.contextMenu button i,
+.dplayer-menu div i {
     display: none;
     visibility: hidden;
 }
-.contextMenu[icon=true] button i, .dplayer-menu[icon=true] div i{
+
+.contextMenu[icon=true] button i,
+.dplayer-menu[icon=true] div i {
     display: inline-block;
     visibility: visible;
     width: 18px;
     height: 0;
     font-size: 18px;
     line-height: 0;
-    margin: 0 6px 0px -5px;
+    margin: 0 9px 0px -5px;
     position: relative;
     opacity: 0.8;
     top: 3px;
 }
-.contextMenu[die=true]{
+
+.contextMenu[die=true] {
     opacity: 0;
     visibility: hidden;
     animation: contextMenu-die 0.2s;
 }
-.contextMenu button:hover, .contextMenu button:focus-visible, .dplayer-menu div:hover, .dplayer-menu div:focus-visible{
+
+.contextMenu button:hover,
+.contextMenu button:focus-visible,
+.dplayer-menu div:hover,
+.dplayer-menu div:focus-visible {
     background-color: var(--contextmenu-hover-bgcolor);
 }
-.msgBox{
+
+.msgBox {
     position: fixed;
     z-index: 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999;
     top: 45px;
@@ -118,18 +137,22 @@ body[theme=dark]{
     -moz-user-select: none;
     user-select: none;
 }
+
 @keyframes msgBox {
-    0%{
+    0% {
         top: calc(-100% + 50px);
         visibility: visible;
     }
-    10%{
+
+    10% {
         top: 25px;
     }
-    90%{
+
+    90% {
         top: 25px;
     }
-    100%{
+
+    100% {
         top: calc(-100% + 50px);
         visibility: hidden;
     }
