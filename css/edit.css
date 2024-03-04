@@ -1,0 +1,231 @@
+body{
+    --edit-dialog: rgb(250, 250, 250);
+    --edit-main: rgb(0, 0, 0);
+    --edit-input-bgcolor: rgb(248, 248, 248);
+    --edit-input-border: rgb(96, 94, 92);
+    --edit-input-focus-border: #0078D4;
+    --edit-button-bg: rgb(255, 255, 255);
+    --edit-button-hover-bg: #e2e2e2;
+    --edit-button-active-bg: rgb(206, 206, 206);
+    --edit-button-border: rgb(199, 199, 199);
+    --edit-button-text: rgb(31, 31, 31);
+    --cover: rgba(0, 0, 0, 0.363);
+}
+body[theme=dark]{
+    --edit-dialog: rgb(26, 26, 26);
+    --edit-main: #fff;
+    --edit-input-bgcolor: rgb(17, 17, 17);
+    --edit-input-border: rgb(96, 94, 92);
+    --edit-input-focus-border: #0078D4;
+    --edit-button-bg: rgb(31, 31, 31);
+    --edit-button-hover-bg: #252423;
+    --edit-button-active-bg: rgb(41, 40, 39);
+    --edit-button-border: rgb(95, 94, 92);
+    --edit-button-text: #fff;
+    --cover: rgba(0, 0, 0, 0.363);
+}
+.coverWithColor{
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    background-color: var(--cover);
+}
+.coverWithColor[open=true]{
+    opacity: 1;
+    visibility: visible;
+    animation: comeon 0.15s;
+}
+.coverWithColor[open=false]{
+    animation: comeout 0.15s;
+}
+@keyframes comeon {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes comeout {
+    0%{
+        opacity: 1;
+        visibility: visible;
+    }
+    99%{
+        visibility: visible;
+    }
+    100%{
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+.edit.dialog{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1002;
+    transform: translate(-50%,-50%);
+    background-color: var(--edit-dialog);
+    width: min(80%, 450px);
+    padding: 19px;
+    box-shadow: rgb(0 0 0 / 22%) 0px 25.6px 57.6px 0px, rgb(0 0 0 / 18%) 0px 4.8px 14.4px 0px;
+    border-radius: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.15s;
+}
+.edit.dialog[open=true]{
+    opacity: 1;
+    visibility: visible;
+}
+.edit h1{
+    padding: 0px 0 10px 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--edit-main);
+}
+.edit h2{
+    padding: 15px 0 10px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--edit-main);
+}
+.edit p{
+    font-size: 14px;
+    color: var(--edit-main);
+}
+.edit p[link]{
+    color: var(--edit-input-focus-border);
+    cursor: pointer;
+}
+.edit .inputInner{
+    display: flex;
+    flex-direction: column;
+}
+.edit label{
+    flex-grow: 0;
+    flex-shrink: 0;
+    color: var(--edit-main);
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    font-weight: 600;
+    box-sizing: border-box;
+    box-shadow: none;
+    margin: 0px;
+    display: block;
+    padding: 5px 0px;
+    overflow-wrap: break-word;
+}
+.edit .inputInner input{
+    flex-grow: 1;
+    flex-shrink: 1;
+    color: var(--edit-main);
+    font-size: 14px;
+    box-shadow: none;
+    margin: 0px;
+    padding: 0px 8px;
+    box-sizing: border-box;
+    border: 1px solid var(--edit-input-border);
+    border-radius: 2px;
+    background: var(--edit-input-bg);
+    cursor: text;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.edit .inputInner input:focus{
+    border: 2px solid var(--edit-input-focus-border);
+    padding: 0px 7px;
+}
+.edit .buttons{
+    display: block;
+    text-align: right;
+    margin: 12px 0 0 0;
+}
+.edit button{
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    font-weight: 400;
+    box-sizing: border-box;
+    color: var(--edit-button-text);
+    background-color: var(--edit-button-bg);
+    border: 1px solid var(--edit-button-border);
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    margin: 8px 0;
+    padding: 0px 16px;
+    border-radius: 2px;
+    min-width: 80px;
+    height: 32px;
+}
+.edit .buttons button{
+    margin: 0 0 0 10px;
+}
+.edit button.small{
+    min-width: 32px;
+    padding: 0 0;
+}
+.edit button:hover, .edit .buttons button:focus-visible{
+    background-color: var(--edit-button-hover-bg);
+}
+.edit  button:active{
+    background-color: var(--edit-button-active-bg);
+}
+.edit .ChoiceField{
+    font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    color: var(--edit-main);
+    min-height: 26px;
+    border: none;
+    position: relative;
+    margin-top: 8px;
+}
+.edit .ChoiceField label{
+    font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+    align-items: center;
+    width: -webkit-fill-available;
+    box-sizing: border-box;
+    color: var(--edit-main);
+    border: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+.edit .ChoiceField label input[type=radio]{
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 0px;
+    position: relative;
+    vertical-align: middle;
+    user-select: none;
+}
+.edit .ChoiceField label span{
+    display: inline-block;
+    padding-left: 6px;
+    vertical-align: middle;
+}

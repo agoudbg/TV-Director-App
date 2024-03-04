@@ -1,0 +1,57 @@
+body{    
+    --window-action: #000;
+    --hovergrey1: rgba(151, 151, 151, 0.301);
+    --hovergrey2: rgba(206, 206, 206, 0.5);
+    --hoverred: rgb(230, 0, 0);
+}
+body[theme=dark]{
+    --window-action: rgb(255, 255, 255);   
+}
+header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 31px;
+    z-index: 9999999999999999999999999999999999999999999;
+    -webkit-app-region: drag;
+}
+#windowActions{
+    position: absolute;
+    right: 0;
+    top: 0;
+    -webkit-app-region: no-drag;
+}
+body.full header{
+    display: none;
+}
+#windowActions svg{
+    padding: 8px 16px;
+    margin: -2px;
+    fill: var(--window-action);
+    transition: all 0.2s;
+}
+#windowActions #extendMenu{
+    display: none;
+}
+#windowActions svg:hover{
+    background-color: var(--hovergrey1);
+}
+#windowActions svg:active{
+    opacity: 0.8;
+}
+#windowActions svg#closeWindow:hover{
+    background-color: var(--hoverred);
+}
+#maxWindow #reWindowsvg{
+    display: none;
+}
+#maxWindow.full{
+    display: none;
+}
+#maxWindow.res #reWindowsvg{
+    display: inline;
+}
+#maxWindow.res #maxWindowsvg{
+    display: none;
+}

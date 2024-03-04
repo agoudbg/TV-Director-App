@@ -1,0 +1,136 @@
+body{
+    --page-bgcolor: #fff;
+    --scroller-grey: rgba(196, 196, 196, 0.404);
+}
+body[theme=dark]{
+    --page-bgcolor: #141414;
+}
+body{
+    user-select: none;
+    background: var(--page-bgcolor);
+}
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+main{
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    top: 28px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+body.full main{
+    top: 7px;
+}
+.pageLeft{
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 100%;
+}
+.pageRight{
+    background-color: var(--page-bgcolor);
+    width: 0;
+    transition: all 0.3s;
+    padding: 0;
+}
+.pageRight[show=relative]{
+    position: relative;
+    display: block;
+    width: 300px;
+    height: 100%;
+    padding: 0 15px 0 15px;
+}
+.pageRight[show=fixed]{
+    position: absolute;
+    display: block;
+    width: 300px;
+    right: 0;
+    height: 100%;
+    z-index: 99;
+    padding: 0 15px 0 15px;
+}
+.pageRight.commonCover{
+    display: none;
+}
+.pageRight[show=fixed].commonCover{
+    display: block;
+}
+.rightFrame{
+    position: relative;
+    height: 100%;
+    width: 300px;
+    display: none;
+    overflow: auto;
+}
+.rightFrame[open=true]{
+    display: block;
+    animation: frameCome 0.5s cubic-bezier(0.01, 0.24, 0, 0.86);
+}
+#linkEditBlock{
+    height: calc(100% - 95px);
+    overflow: auto;
+}
+@keyframes frameCome {
+    0%{
+        opacity: 0.3;
+        top: 45px;
+        filter: blur(1px);
+    }
+    100%{
+        opacity: 1;
+        top: 0px;
+    }
+}
+.material-icons{
+    font-family: 'Material Icons';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    font-style: normal;
+}
+@font-face{
+    font-weight: 400;
+    font-family: 'Material Icons';
+    font-style: normal;
+    src: url(../font/MaterialIcons-Regular.woff2) format('woff2');
+}
+.commonCover{
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 150000;
+}
+::-webkit-scrollbar{
+    width: 7px;
+    height: 7px; 
+}
+::-webkit-scrollbar:hover{
+    width: 7px;
+    height: 7px; 
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background: var(--scroller-grey);
+}
+body *[scroll=hidden]::-webkit-scrollbar-thumb{
+    background: none;
+}
+::-webkit-scrollbar-track{
+    border-radius: 10px;
+    width: 0;
+    opacity: 0;
+}
+#updatedWhat{
+    overflow: auto;
+    max-height: 50vh;
+}
