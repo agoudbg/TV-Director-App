@@ -11,7 +11,7 @@
   "build": {
     "productName": "电视导播台",
     "appId": "space.anbo.daobotai",
-    "electronVersion": "13.0.1",
+    "electronVersion": "29.1.0",
     "win": {
       "target": [
         "nsis",
@@ -27,6 +27,8 @@
   "author": "安播空间",
   "license": "ISC",
   "devDependencies": {
-    "electron-builder": "^22.11.7"
-  }
+    "electron-builder": "^22.11.7",
+    "electron": "^29.1.0"
+  },
+  "dependencies": {}
 }
