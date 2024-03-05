@@ -1,4 +1,4 @@
-body{
+body {
     --edit-dialog: rgb(250, 250, 250);
     --edit-main: rgb(0, 0, 0);
     --edit-input-bgcolor: rgb(248, 248, 248);
@@ -11,7 +11,8 @@ body{
     --edit-button-text: rgb(31, 31, 31);
     --cover: rgba(0, 0, 0, 0.363);
 }
-body[theme=dark]{
+
+body[theme=dark] {
     --edit-dialog: rgb(26, 26, 26);
     --edit-main: #fff;
     --edit-input-bgcolor: rgb(17, 17, 17);
@@ -24,7 +25,8 @@ body[theme=dark]{
     --edit-button-text: #fff;
     --cover: rgba(0, 0, 0, 0.363);
 }
-.coverWithColor{
+
+.coverWithColor {
     display: block;
     position: fixed;
     top: 0;
@@ -36,42 +38,49 @@ body[theme=dark]{
     visibility: hidden;
     background-color: var(--cover);
 }
-.coverWithColor[open=true]{
+
+.coverWithColor[open=true] {
     opacity: 1;
     visibility: visible;
     animation: comeon 0.15s;
 }
-.coverWithColor[open=false]{
+
+.coverWithColor[open=false] {
     animation: comeout 0.15s;
 }
+
 @keyframes comeon {
-    0%{
+    0% {
         opacity: 0;
     }
-    100%{
+
+    100% {
         opacity: 1;
     }
 }
 
 @keyframes comeout {
-    0%{
+    0% {
         opacity: 1;
         visibility: visible;
     }
-    99%{
+
+    99% {
         visibility: visible;
     }
-    100%{
+
+    100% {
         opacity: 0;
         visibility: hidden;
     }
 }
-.edit.dialog{
+
+.edit.dialog {
     position: fixed;
     top: 50%;
     left: 50%;
     z-index: 1002;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background-color: var(--edit-dialog);
     width: min(80%, 450px);
     padding: 19px;
@@ -81,35 +90,42 @@ body[theme=dark]{
     visibility: hidden;
     transition: all 0.15s;
 }
-.edit.dialog[open=true]{
+
+.edit.dialog[open=true] {
     opacity: 1;
     visibility: visible;
 }
-.edit h1{
+
+.edit h1 {
     padding: 0px 0 10px 0;
     font-size: 24px;
     font-weight: 600;
     color: var(--edit-main);
 }
-.edit h2{
+
+.edit h2 {
     padding: 15px 0 10px 0;
     font-size: 20px;
     font-weight: 600;
     color: var(--edit-main);
 }
-.edit p{
+
+.edit p {
     font-size: 14px;
     color: var(--edit-main);
 }
-.edit p[link]{
+
+.edit a[link] {
     color: var(--edit-input-focus-border);
     cursor: pointer;
 }
-.edit .inputInner{
+
+.edit .inputInner {
     display: flex;
     flex-direction: column;
 }
-.edit label{
+
+.edit label {
     flex-grow: 0;
     flex-shrink: 0;
     color: var(--edit-main);
@@ -123,7 +139,8 @@ body[theme=dark]{
     padding: 5px 0px;
     overflow-wrap: break-word;
 }
-.edit .inputInner input{
+
+.edit .inputInner input {
     flex-grow: 1;
     flex-shrink: 1;
     color: var(--edit-main);
@@ -144,16 +161,19 @@ body[theme=dark]{
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.edit .inputInner input:focus{
+
+.edit .inputInner input:focus {
     border: 2px solid var(--edit-input-focus-border);
     padding: 0px 7px;
 }
-.edit .buttons{
+
+.edit .buttons {
     display: block;
     text-align: right;
     margin: 12px 0 0 0;
 }
-.edit button{
+
+.edit button {
     position: relative;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -172,20 +192,26 @@ body[theme=dark]{
     min-width: 80px;
     height: 32px;
 }
-.edit .buttons button{
+
+.edit .buttons button {
     margin: 0 0 0 10px;
 }
-.edit button.small{
+
+.edit button.small {
     min-width: 32px;
     padding: 0 0;
 }
-.edit button:hover, .edit .buttons button:focus-visible{
+
+.edit button:hover,
+.edit .buttons button:focus-visible {
     background-color: var(--edit-button-hover-bg);
 }
-.edit  button:active{
+
+.edit button:active {
     background-color: var(--edit-button-active-bg);
 }
-.edit .ChoiceField{
+
+.edit .ChoiceField {
     font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -200,7 +226,8 @@ body[theme=dark]{
     position: relative;
     margin-top: 8px;
 }
-.edit .ChoiceField label{
+
+.edit .ChoiceField label {
     font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
@@ -216,7 +243,8 @@ body[theme=dark]{
     padding: 0;
     cursor: pointer;
 }
-.edit .ChoiceField label input[type=radio]{
+
+.edit .ChoiceField label input[type=radio] {
     display: inline-block;
     cursor: pointer;
     margin-top: 0px;
@@ -224,7 +252,8 @@ body[theme=dark]{
     vertical-align: middle;
     user-select: none;
 }
-.edit .ChoiceField label span{
+
+.edit .ChoiceField label span {
     display: inline-block;
     padding-left: 6px;
     vertical-align: middle;
