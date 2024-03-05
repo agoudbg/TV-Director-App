@@ -64,13 +64,14 @@ body[theme=dark] {
 }
 
 .rightOpe .rightButton {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     padding: 10px;
     -webkit-app-region: no-drag;
     display: inline-block;
-    cursor: pointer;
     border-radius: 2.8px;
+    background: none;
+    border: none;
 }
 
 .rightOpe .rightButton:hover {
