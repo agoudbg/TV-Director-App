@@ -146,7 +146,16 @@
                 <p id="nowVer"></p>
                 <label>重置</label>
                 <p>如果应用出现了问题，请重置。这将清除您的一切使用数据，包括保存的频道、颜色设置和其它个性化设置。</p>
-                <button onclick="localStorage.clear();window.location.href=''">重置</button>
+                <script>
+                    function confirmReset() {
+                        const r = confirm('重置将清除您的一切使用数据，包括保存的频道、颜色设置和其它个性化设置。\n\n确定要重置吗？');
+                        if (r) {
+                            localStorage.clear();
+                            location.reload();
+                        }
+                    }
+                </script>
+                <button onclick="confirmReset()">重置</button>
                 <br><br>
                 <p>Copyright anbo.space 2020-2021. All rights reserved. </p>
                 <p link onclick="window.open('https://anbo.space?from=app&appname=daobotai')">访问安播空间网站</p>
