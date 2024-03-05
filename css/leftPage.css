@@ -150,7 +150,7 @@ body[theme=dark] {
     height: 0px;
     text-overflow: clip;
     margin-top: 3px;
-    transition: all 0.23s;
+    /* transition: all 0.23s; */
 }
 
 .screamSingle:not(*:hover) .controller {
@@ -167,7 +167,7 @@ body[theme=dark] {
 }
 
 #screams .screamSingle .controller * {
-    transition: all 0.4s;
+    /* transition: all 0.4s; */
     overflow: hidden;
 }
 
@@ -184,7 +184,7 @@ body[theme=dark] {
     overflow: hidden;
     word-break: keep-all;
     white-space: nowrap;
-    transition: all 0.3s;
+    /* transition: all 0.3s; */
 }
 
 .screamSingle:hover .controller .moreButton {
@@ -203,7 +203,7 @@ body[theme=dark] {
     white-space: nowrap;
     overflow-wrap: unset;
     max-width: 100%;
-    transition: all 0.3s;
+    /* transition: all 0.3s; */
 }
 
 .screamSingle:hover .controller .name {
