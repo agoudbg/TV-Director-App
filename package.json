@@ -1,6 +1,6 @@
 {
   "name": "daobotai",
-  "version": "0.0.2",
+  "version": "0.0.3+3",
   "description": "电视导播台",
   "main": "main.js",
   "scripts": {
