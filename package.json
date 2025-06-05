@@ -27,8 +27,7 @@
   "author": "安播空间",
   "license": "ISC",
   "devDependencies": {
-    "electron-builder": "^22.11.7",
-    "electron": "^29.1.0"
-  },
-  "dependencies": {}
+    "electron": "^29.1.0",
+    "electron-builder": "^26.0.12"
+  }
 }
