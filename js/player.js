@@ -1,4 +1,8 @@
 function newPlayer(num) {
+    if (getChannel('type', num) == "webpage") {
+        getChannelElement(num).getElementsByClassName("player")[0].innerHTML = `<iframe class="player-iframe" src="${getChannel("url", num)}" frameborder="0" allowfullscreen></iframe>`;
+        return;
+    }
     dp = new DPlayer({
         container: document.getElementsByClassName("player")[num],
         autoplay: true,
@@ -23,7 +27,7 @@ function newPlayer(num) {
 
 function showPlayerMenu(num) {
     if (getChannelElement(num).getElementsByClassName("dplayer-menu")[0].className.indexOf("sudo-open") > 0)
-        getChannelElement(num).getElementsByClassName("dplayer-menu")[0].className =getChannelElement(num).getElementsByClassName("dplayer-menu")[0].className.replace(/sudo-open/g, "");
+        getChannelElement(num).getElementsByClassName("dplayer-menu")[0].className = getChannelElement(num).getElementsByClassName("dplayer-menu")[0].className.replace(/sudo-open/g, "");
     else {
         getChannelElement(num).getElementsByClassName("dplayer-menu")[0].className += " sudo-open ";
         // getChannelElement(num).getElementsByClassName("dplayer-menu")[0].innerHTML = document.getElementsByClassName("dplayer-menu")[num].innerHTML.replace(`关于作者`, "关于").replace(`https://diygod.me`, "https://anbo.space");

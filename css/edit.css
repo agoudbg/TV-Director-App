@@ -125,7 +125,7 @@ body[theme=dark] {
     flex-direction: column;
 }
 
-.edit label {
+.edit label:not(.radioLabel) {
     flex-grow: 0;
     flex-shrink: 0;
     color: var(--edit-main);
@@ -140,7 +140,7 @@ body[theme=dark] {
     overflow-wrap: break-word;
 }
 
-.edit .inputInner input {
+.edit .inputInner input:not(.radioLabel *) {
     flex-grow: 1;
     flex-shrink: 1;
     color: var(--edit-main);
@@ -165,6 +165,11 @@ body[theme=dark] {
 .edit .inputInner input:focus {
     border: 2px solid var(--edit-input-focus-border);
     padding: 0px 7px;
+}
+
+.edit .inputInner .radioLabel {
+    padding: 5px 0;
+    font-size: 14px;
 }
 
 .edit .buttons {

@@ -4,6 +4,12 @@ function edit(num) {
     singleEditCover.setAttribute("open", "true");
     singleEditURL.value = (getChannel("url", num) ? getChannel("url", num) : "");
     singleEditName.value = (getChannel("name", num) ? getChannel("name", num) : "");
+    if (getChannel("type", num) == "webpage") {
+        document.querySelector('[name="singleEditType"][value="webpage"]').checked = true;
+    }
+    else {
+        document.querySelector('[name="singleEditType"][value="stream"]').checked = true;
+    }
 }
 
 function saveSingleEdit() {
@@ -15,6 +21,7 @@ function saveSingleEdit() {
         try {
             setChannel("name", num, singleEditName.value);
             setChannel("url", num, singleEditURL.value);
+            setChannel("type", num, document.querySelector('[name="singleEditType"]').value);
             closeEdit();
             newBlock(num);
             refreshBlockListType();
@@ -67,6 +74,15 @@ editTemplate = `
 <label for="name">名称</label>
 <input name="name" value="{{name}}">
 </div>
+<div class="inputInner ChoiceField">
+<label><b>类型</b></label>
+<label>
+<input name="type{{id}}" type="radio" value="webpage" {{webpage}}>
+网页</label>
+<label>
+<input name="type{{id}}" type="radio" value="stream" {{stream}}>
+视频流</label>
+</div>
 <div class="buttons right">
 <button class="small material-icons" onclick="upLink({{id}})" title="Up">&#xe5d8;</button><button class="small material-icons" onclick="downLink({{id}})" title="Down">&#xe5db;</button><button class="small material-icons" onclick="delLink({{id}})" title="Delete">&#xe872;</button>
 </div>
@@ -81,7 +97,12 @@ openEdit.onclick = function () {
     channels = JSON.parse(localStorage.getItem("channelList")).channels;
     for (linkCache = 0; linkCache < Object.keys(channels).length; linkCache++) {
         nowLinkInfo = channels[linkCache];
-        linkEditBlock.innerHTML += editTemplate.replace(/{{id}}/g, linkCache).replace(/{{name}}/g, nowLinkInfo.name).replace(/{{url}}/g, nowLinkInfo.url);
+        linkEditBlock.innerHTML += editTemplate
+            .replace(/{{id}}/g, linkCache)
+            .replace(/{{name}}/g, nowLinkInfo.name)
+            .replace(/{{url}}/g, nowLinkInfo.url)
+            .replace(/{{webpage}}/g, nowLinkInfo.type == "webpage" ? "checked" : "")
+            .replace(/{{stream}}/g, (nowLinkInfo.type == "stream" || !nowLinkInfo.type) ? "checked" : "");
     }
 }
 function delLink(id) {
@@ -153,6 +174,7 @@ saveLinks.onclick = function () {
         saveJSON.channels[saveCache] = {};
         saveJSON.channels[saveCache].name = saveName;
         saveJSON.channels[saveCache].url = saveAdd;
+        saveJSON.channels[saveCache].type = nowSaving.getElementsByTagName("input")[2].checked ? "webpage" : "stream";
     }
     localStorage.setItem("channelList", JSON.stringify(saveJSON));
     refreshBlocks();

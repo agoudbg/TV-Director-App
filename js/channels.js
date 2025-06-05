@@ -84,7 +84,15 @@ if (!localStorage.getItem("channelList")) {
 }
 
 function showChannelMenu(id, byButton = false) {
-    msgContextMenuItems = [["刷新", "newPlayer(" + id + ");", "&#xe5d5;"], ["编辑", "edit(" + id + ");", "&#xe3c9;"], ["删除", "softDeleteChannel(" + id + ")", "&#xe872;"], ["line"], ["显示更多选项", "showPlayerMenu(" + id + ");", "&#xe869;"]];
+    msgContextMenuItems = [
+        ["刷新", "newPlayer(" + id + ");", "&#xe5d5;"],
+        ["编辑", "edit(" + id + ");", "&#xe3c9;"],
+        ["删除", "softDeleteChannel(" + id + ")", "&#xe872;"],
+        ...getChannel("type", id) == "webpage" ? [] : [
+            ["line"],
+            ["显示更多选项", "showPlayerMenu(" + id + ");", "&#xe869;"]
+        ]
+    ];
     createContextMenu(msgContextMenuItems);
 }
 

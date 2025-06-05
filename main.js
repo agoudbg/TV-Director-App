@@ -2,6 +2,8 @@ const { app, BrowserWindow } = require('electron')
 //获取ipc对象
 const ipcMain = require('electron').ipcMain
 
+app.commandLine.appendSwitch("disable-site-isolation-trials");
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
@@ -16,14 +18,14 @@ function createWindow() {
         titleBarStyle: 'hidden',
         transparent: false,
         webPreferences: {
-            nodeIntegration: true, 
+            nodeIntegration: true,
             webSecurity: false,
             contextIsolation: false
         },
         backgroundColor: '#ffffff'
     })
-// 解决CORS
-app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors');
+    // 解决CORS
+    app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors');
     // 然后加载应用的 index.html。
     win.loadFile('index.html')
 
@@ -40,8 +42,8 @@ app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors');
 
     // 最小化、最大化
     win.on('maximize', () => {
-        if(!win.isFullScreen())
-        win.webContents.send("windowStatusChange", "true");
+        if (!win.isFullScreen())
+            win.webContents.send("windowStatusChange", "true");
     })
     win.on('unmaximize', () => {
         win.webContents.send("windowStatusChange", "false");

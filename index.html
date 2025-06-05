@@ -199,6 +199,15 @@
                 <label for="singleEditName">名称</label>
                 <input id="singleEditName">
             </div>
+            <div class="inputInner">
+                <label>类型</label>
+                <label class="radioLabel">
+                    <input name="singleEditType" type="radio" value="webpage">
+                    网页</label>
+                <label class="radioLabel">
+                    <input name="singleEditType" type="radio" value="stream" checked>
+                    视频流</label>
+            </div>
             <div class="buttons right">
                 <button type="reset" onclick="closeEdit()">取消</button><button type="submit"
                     onclick="saveSingleEdit()">保存</button>
