@@ -146,6 +146,7 @@ body[theme=dark] {
 }
 
 .screamSingle .controller {
+    position: relative;
     display: flex;
     overflow: hidden;
     height: 0px;
