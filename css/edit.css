@@ -217,7 +217,6 @@ body[theme=dark] {
 }
 
 .edit .ChoiceField {
-    font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     font-weight: 400;
@@ -233,7 +232,6 @@ body[theme=dark] {
 }
 
 .edit .ChoiceField label {
-    font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: 14px;
     font-weight: 400;
